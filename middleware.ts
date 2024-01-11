@@ -5,10 +5,12 @@ export default authMiddleware({
     '/',
     '/threads',
     '/profile',
-    '/settings'
+    '/settings',
+    '/api/webhook/clerk',
   ],
   ignoredRoutes: [
     '/api',
+    '/api/webhook/clerk',
   ]
 });
  
