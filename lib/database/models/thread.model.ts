@@ -7,7 +7,7 @@ export interface IThread extends Document {
   summary: string;
   createdAt: Date;
   imageUrl: string;
-  author: { _id: string, firstName: string, lastName: string }
+  author: { _id: string, firstName: string, lastName: string, username: string }
 }
 
 const ThreadSchema = new Schema({

@@ -5,3 +5,10 @@ export const NavLinks = [
   { url: '/profile', image: '/assets/icons/user.svg', label: 'Profil' },
   { url: '/settings', image: '/assets/icons/settings.svg', label: 'Options' },
 ]
+
+export const threadDefaultValues = {
+  title: '',
+  description: '',
+  summary: '',
+  imageUrl: '',
+}

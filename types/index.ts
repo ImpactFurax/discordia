@@ -13,3 +13,24 @@ export type UpdateUserParams = {
   username: string
   photo: string
 }
+
+export type CreateThreadParams = {
+  userId: string
+  thread: {
+    title: string
+    description: string
+    summary: string
+    imageUrl: string
+  }
+  path: string
+}
+export type SearchParamProps = {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export type GetAllThreadsParams = {
+  query: string
+  limit: number
+  page: number
+}
