@@ -2,9 +2,9 @@ import Collection from '@/components/shared/Collection'
 import FilterBar from '@/components/shared/FilterBar'
 import SearchBar from '@/components/shared/SearchBar'
 import { getAllThreads } from '@/lib/actions/thread.actions'
-import React from 'react'
 
 const Threads = async () => {
+  await new Promise(resolve => setTimeout(resolve, 2000))
   const threads = await getAllThreads({
     query: '',
     page: 1,

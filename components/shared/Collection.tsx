@@ -1,7 +1,5 @@
 import { IThread } from "@/lib/database/models/thread.model"
 import Card from "./Card"
-import Link from "next/link"
-import Image from "next/image"
 
 type CollectionProps = {
   data: IThread[],
@@ -18,17 +16,15 @@ const Collection = ({ data, emptyTitle, emptyStateSubtext, page, totalPages = 0,
   return (
     <>
       {data.length > 0 ? (
-        <div className="w-full">
-          <ul className="flex flex-col xl:items-center xl:justify-center gap-16 lg:flex-wrap xl:flex-row">
-            {data.map((thread) => {
-              return (
-                <li key={thread._id} className="flex-center flex-col">
-                  <Card thread={thread} />
-                </li>
-              )
-            })}
-          </ul>
-        </div>
+        <ul className="flex w-full flex-col gap-10 md:items-center xl:flex-row xl:flex-wrap xl:justify-center">
+          {data.map((thread) => {
+            return (
+              <li key={thread._id} className="">
+                <Card thread={thread} />
+              </li>
+            )
+          })}
+        </ul>
       ) : (
         <div className="bg-zinc-800 w-full flex-center flex-col gap-2 py-5 rounded-lg text-white">
           <h3 className="text-3xl font-bold">{emptyTitle}</h3>

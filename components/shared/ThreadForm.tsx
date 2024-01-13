@@ -114,7 +114,7 @@ const ThreadForm = ({ userId, type }: ThreadFormProps) => {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Textarea placeholder="Résume l'histoire de ton thread (max 260 caractères)" className="bg-zinc-800 text-md resize-none h-48 focus-visible:ring-0" {...field} />
+                <Textarea placeholder="Résume l'histoire de ton thread (max 300 caractères, espaces non compris)" className="bg-zinc-800 text-md resize-none h-48 focus-visible:ring-0" {...field} />
               </FormControl>
               <FormMessage className="text-red-500 text-sm" />
             </FormItem>

@@ -45,6 +45,7 @@ export function FileUploader({ imageUrl, onFieldChange, setFiles }: FileUploader
         <div className="flex-center flex-col py-5 px-2 gap-3 bg-zinc-800 w-full rounded-md h-96">
           <img src="/assets/icons/dwl-img.svg" width={77} height={77} alt="file upload" />
           <h3 className="mb-2 mt-2 text-lg md:text-2xl">Faite glisser la photo ici</h3>
+          <p className='text-lg md:text-xl'>Taille max : 4MO</p>
           <Button type="button" className="rounded-full bg-indigo-800 text-white text-xl px-8 text-wrap h-auto hover:bg-indigo-700 md:text-2xl">
             Sélectionner depuis l'ordinateur
           </Button>

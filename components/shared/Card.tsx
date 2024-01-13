@@ -5,7 +5,7 @@ import React from 'react'
 
 const Card = ({ thread }: { thread: IThread }) => {
   return (
-    <div className='relative flex min-h-[330px] w-full md:w-[500px] lg:w-[550px] overflow-hidden rounded-xl md:h-[330px] transition-all group'>
+    <div className='relative flex min-h-[330px] w-full md:w-[600px] overflow-hidden rounded-xl transition-all group'>
       <Link href={`/threads/${thread._id}`} className='absolute h-full w-full'>
         <Image src={thread.imageUrl} alt='ImageThread' fill className='object-cover group-hover:opacity-50 duration-500' />
         <div className='flex flex-col justify-between h-full p-4 absolute z-10 opacity-0 group-hover:opacity-100 transition-opacity'>

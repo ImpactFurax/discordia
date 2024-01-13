@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 const Navbar = () => {
   const pathname = usePathname();
   return (
-    <nav className='bg-zinc-800 w-full sm:w-fit p-2 fixed z-10 bottom-0 sm:left-0 sm:pt-28 sm:min-h-screen'>
+    <nav className='bg-zinc-800 w-full sm:w-fit p-2 fixed z-30 bottom-0 sm:left-0 sm:pt-28 sm:min-h-screen'>
       <div className='flex-between sm:flex-col gap-2 sm:gap-6'>
         {NavLinks.map((link) => {
           const isActive = pathname === link.url || pathname.startsWith(link.url) && link.url !== '/';
