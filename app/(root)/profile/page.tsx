@@ -18,21 +18,23 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
     query: searchText,
   });
   return (
-    <section className='py-16'>
-      <div className='flex-center flex-col gap-10 px-4'>
-        <h1 className='font-bold text-5xl text-center'>Mes Threads</h1>
-        <SearchBar />
-        <Collection
-          data={authorThreads?.data}
-          emptyTitle="Tu n'as pas encore crée de thread"
-          emptyStateSubtext="Va vite en créer"
-          collectionType="All_Threads"
-          delOrUpd={true}
-          limit={6}
-          page={1}
-          totalPages={2}
-        />
+    <section className='py-16 flex-center flex-col gap-16 px-4 2xl:px-30'>
+      <div className='flex items-center flex-col gap-16 md:px-8 md:flex-row md:justify-between w-full'>
+        <h1 className='text-5xl font-bold text-center min-w-[280px]'>Mes Threads</h1>
+        <div className='flex w-full md:justify-end flex-col md:flex-row'>
+          <SearchBar />
+        </div>
       </div>
+      <Collection
+        data={authorThreads?.data}
+        emptyTitle="Tu n'as pas encore crée de thread"
+        emptyStateSubtext="Va vite en créer"
+        collectionType="All_Threads"
+        delOrUpd={true}
+        limit={6}
+        page={1}
+        totalPages={2}
+      />
     </section>
   )
 }
