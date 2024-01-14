@@ -17,6 +17,7 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
     limit: 6,
     query: searchText,
   });
+  await new Promise(resolve => setTimeout(resolve, 1000))
   return (
     <section className='py-16 flex-center flex-col gap-16 px-4 2xl:px-30'>
       <div className='flex items-center flex-col gap-16 md:px-8 md:flex-row md:justify-between w-full'>
