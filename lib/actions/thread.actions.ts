@@ -50,11 +50,14 @@ export const getAllThreads = async ({query, limit = 6, page}: GetAllThreadsParam
   try {
     await connectToDatabase();
 
-    const conditions = {};
+    const titleCondition = query ? { title: { $regex: query, $options: 'i' } } : {}
+
+    const conditions = { ...titleCondition }
     
+    const skipAmount = (Number(page) - 1) * limit;
     const threadsQuery = Thread.find(conditions)
     .sort({ createdAt: 'desc'})
-    .skip(0)
+    .skip(skipAmount)
     .limit(limit)
 
     const threads = await populateThread(threadsQuery);
@@ -104,11 +107,13 @@ export async function updateThread({ userId, thread, path }: UpdateThreadParams)
   }
 }
 
-export async function getThreadsByUser({ userId, limit = 6, page }: GetThreadsByUserParams) {
+export async function getThreadsByUser({ userId, limit = 6, page, query }: GetThreadsByUserParams) {
   try {
     await connectToDatabase()
 
-    const conditions = { author: userId }
+    const titleCondition = query ? { title: { $regex: query, $options: 'i' } } : {}
+    const conditions = { ...titleCondition, author: userId }
+
     const skipAmount = (page - 1) * limit
 
     const threadsQuery = Thread.find(conditions)
