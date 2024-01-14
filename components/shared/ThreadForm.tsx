@@ -14,17 +14,22 @@ import { FileUploader } from "./FileUploader"
 import { useState } from "react"
 import { useUploadThing } from '@/lib/uploadthing';
 import { useRouter } from "next/navigation"
-import { createThread } from "@/lib/actions/thread.actions"
+import { createThread, updateThread } from "@/lib/actions/thread.actions"
+import { IThread } from "@/lib/database/models/thread.model"
 
 
 type ThreadFormProps = {
   userId: string
   type: "Créer" | "Modifier"
+  thread?: IThread
+  threadId?: string
 }
 
-const ThreadForm = ({ userId, type }: ThreadFormProps) => {
+const ThreadForm = ({ userId, type, thread, threadId }: ThreadFormProps) => {
   const [files, setFiles] = useState<File[]>([])
-  const initialValues = threadDefaultValues;
+  const initialValues = thread && type === 'Modifier'
+    ? thread
+    : threadDefaultValues;
   const router = useRouter();
 
   const { startUpload } = useUploadThing('imageUploader');
@@ -58,6 +63,28 @@ const ThreadForm = ({ userId, type }: ThreadFormProps) => {
         if (newThread) {
           form.reset();
           router.push(`/threads/${newThread._id}`)
+        }
+      } catch (error) {
+        console.log(error);
+
+      }
+    }
+
+    if (type === 'Modifier') {
+      if (!threadId) {
+        router.back();
+        return;
+      }
+
+      try {
+        const updatedThread = await updateThread({
+          userId,
+          thread: { ...values, imageUrl: uploadedImageUrl, _id: threadId },
+          path: `/threads/${threadId}`
+        })
+        if (updatedThread) {
+          form.reset();
+          router.push(`/threads/${updatedThread._id}`)
         }
       } catch (error) {
         console.log(error);

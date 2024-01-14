@@ -34,3 +34,20 @@ export type GetAllThreadsParams = {
   limit: number
   page: number
 }
+
+export type DeleteThreadParams = {
+  threadId: string
+  path: string
+}
+
+export type UpdateThreadParams = {
+  userId: string
+  thread: {
+    _id: string
+    title: string
+    imageUrl: string
+    description: string
+    summary: string
+  }
+  path: string
+}

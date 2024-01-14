@@ -6,7 +6,7 @@ import ThemeAction from './ThemeAction'
 
 const Topbar = () => {
   return (
-    <div className='z-40 flex-between bg-zinc-800 p-2 fixed top-0 w-full'>
+    <div className='z-50 flex-between bg-zinc-800 p-2 fixed top-0 w-full'>
       <Link href="/" className='flex-center'>
         <Image src="/assets/images/hand-logo.png" alt='hand-logo' width={55} height={60} />
         <Image src="/assets/images/logo.png" alt='logo' width={165} height={65} className='hidden sm:flex' />

@@ -25,6 +25,7 @@ const Threads = async () => {
         emptyTitle="Aucun Threads trouvé"
         emptyStateSubtext="Revenez plus tard!"
         collectionType="All_Threads"
+        delOrUpd={false}
         limit={6}
         page={1}
         totalPages={2}

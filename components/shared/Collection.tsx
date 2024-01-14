@@ -9,18 +9,19 @@ type CollectionProps = {
   page: number | string,
   totalPages?: number,
   urlParamName?: string,
-  collectionType?: 'Threads_Organized' | 'All_Threads'
+  collectionType?: 'Threads_Organized' | 'All_Threads',
+  delOrUpd: boolean
 }
 
-const Collection = ({ data, emptyTitle, emptyStateSubtext, page, totalPages = 0, collectionType, urlParamName }: CollectionProps) => {
+const Collection = ({ data, emptyTitle, emptyStateSubtext, page, totalPages = 0, collectionType, urlParamName, delOrUpd }: CollectionProps) => {
   return (
     <>
       {data.length > 0 ? (
         <ul className="flex w-full flex-col gap-10 md:items-center xl:flex-row xl:flex-wrap xl:justify-center">
           {data.map((thread) => {
             return (
-              <li key={thread._id} className="">
-                <Card thread={thread} />
+              <li key={thread._id}>
+                <Card thread={thread} delOrUpd={delOrUpd} />
               </li>
             )
           })}
