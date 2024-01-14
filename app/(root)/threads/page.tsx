@@ -12,7 +12,7 @@ const Threads = async () => {
   });
 
   return (
-    <section className='py-16 flex-center flex-col gap-16 px-2 md:px-20 2xl:px-30'>
+    <section className='py-16 flex-center flex-col gap-16 px-4 md:px-20 2xl:px-30'>
       <div className='flex-center flex-col gap-16 md:flex-row md:justify-between w-full'>
         <h1 className='text-5xl font-bold text-center'>Threads</h1>
         <div className='flex-center flex-col md:flex-row'>
