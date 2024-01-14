@@ -47,3 +47,9 @@ export type UpdateThreadParams = {
   }
   path: string
 }
+
+export type GetThreadsByUserParams = {
+  userId: string
+  limit?: number
+  page: number
+}

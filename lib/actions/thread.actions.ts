@@ -1,6 +1,6 @@
 'use server'
 
-import { CreateThreadParams, DeleteThreadParams, GetAllThreadsParams, UpdateThreadParams } from "@/types"
+import { CreateThreadParams, DeleteThreadParams, GetAllThreadsParams, GetThreadsByUserParams, UpdateThreadParams } from "@/types"
 import { connectToDatabase } from "../database";
 import User from "../database/models/user.model";
 import Thread from "../database/models/thread.model";
@@ -99,6 +99,27 @@ export async function updateThread({ userId, thread, path }: UpdateThreadParams)
     revalidatePath(path)
 
     return JSON.parse(JSON.stringify(updatedThread))
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getThreadsByUser({ userId, limit = 6, page }: GetThreadsByUserParams) {
+  try {
+    await connectToDatabase()
+
+    const conditions = { author: userId }
+    const skipAmount = (page - 1) * limit
+
+    const threadsQuery = Thread.find(conditions)
+      .sort({ createdAt: 'desc' })
+      .skip(skipAmount)
+      .limit(limit)
+
+    const threads = await populateThread(threadsQuery)
+    const threadsCount = await Thread.countDocuments(conditions)
+
+    return { data: JSON.parse(JSON.stringify(threads)), totalPages: Math.ceil(threadsCount / limit) }
   } catch (error) {
     console.log(error);
   }

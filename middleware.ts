@@ -4,7 +4,7 @@ export default authMiddleware({
   publicRoutes: [
     '/',
     '/threads',
-    '/profile',
+    '/threads/:id',
     '/settings',
     '/api/webhook/clerk',
     '/api/uploadthing',
