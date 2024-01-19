@@ -1,4 +1,5 @@
 import Collection from '@/components/shared/Collection'
+import ProfileData from '@/components/shared/ProfileData';
 import SearchBar from '@/components/shared/SearchBar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getThreadsByUser } from '@/lib/actions/thread.actions';
@@ -44,7 +45,9 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
             totalPages={2}
           />
         </TabsContent>
-        <TabsContent value="data"></TabsContent>
+        <TabsContent value="data">
+          <ProfileData userId={userId} />
+        </TabsContent>
       </Tabs>
     </section>
   )

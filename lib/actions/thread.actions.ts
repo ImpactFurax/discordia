@@ -129,3 +129,20 @@ export async function getThreadsByUser({ userId, limit = 6, page, query }: GetTh
     console.log(error);
   }
 }
+
+export const getThreadDataByUserId = async (userId: string) => {
+try { 
+  try {
+    await connectToDatabase();
+
+    const threads = await Thread.countDocuments({ author: userId });
+
+    return JSON.parse(JSON.stringify(threads));
+  } catch (error) {
+    
+  }
+} catch (error) {
+  console.log(error);
+  
+}
+} 

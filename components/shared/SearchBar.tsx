@@ -35,7 +35,7 @@ const SearchBar = ({ placeholder = 'Nom du thread...' }: { placeholder?: string 
     <div className='flex flex-col gap-3'>
       <h2 className='font-semibold text-2xl'>Rechercher :</h2>
       <div className='w-full bg-zinc-800 min-h-[40px] rounded-lg overflow-hidden px-4 py-2 flex items-center justify-between'>
-        <Input type='text' placeholder={placeholder} className='focus-visible:ring-0 text-lg' onChange={(e) => setQuery(e.target.value)} />
+        <Input type='text' placeholder={placeholder} className='focus-visible:ring-0 text-lg border-none' onChange={(e) => setQuery(e.target.value)} />
         <Image src="/assets/icons/search.svg" alt='search' width={24} height={24} />
       </div>
     </div>
