@@ -25,7 +25,7 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
       <Tabs defaultValue="threads" className="w-full flex flex-col gap-10">
         <TabsList className='h-fit px-2 flex flex-col sm:flex-row bg-zinc-800 py-2'>
           <TabsTrigger value="threads" className='text-lg w-full'>Mes Threads</TabsTrigger>
-          <TabsTrigger value="data" className='text-lg w-full'>Mes données</TabsTrigger>
+          <TabsTrigger value="data" className='text-lg w-full'>Infos</TabsTrigger>
         </TabsList>
         <TabsContent value="threads" className='flex flex-col gap-10'>
           <div className='flex items-center flex-col gap-16 md:px-8 md:flex-row md:justify-between w-full'>

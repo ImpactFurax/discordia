@@ -6,3 +6,7 @@ export const threadFormSchema = z.object({
   summary: z.string().min(3, 'Le résumé doit comporter au moins 3 caractères').max(300,'Le résumé doit comporter moins de 300 caractères'),
   imageUrl: z.string(),
 })
+
+export const commentFormSchema = z.object({
+  comment: z.string().min(3, 'Le commentaire doit comporter au moins 3 caractères').max(600,'Le commentaire doit comporter moins de 500 caractères'),
+})

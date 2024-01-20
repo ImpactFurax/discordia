@@ -65,3 +65,10 @@ export type RemoveUrlQueryParams = {
   params: string
   keysToRemove: string[]
 }
+
+export type CreateCommentParams = {
+  userId: string
+  threadId: string
+  comment: string
+  path: string
+}
