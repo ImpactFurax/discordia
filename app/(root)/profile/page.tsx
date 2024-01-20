@@ -21,11 +21,11 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
   });
   await new Promise(resolve => setTimeout(resolve, 1000))
   return (
-    <section className='py-16 flex-center flex-col gap-16 px-4 2xl:px-10'>
+    <section className='py-16 flex-center flex-col gap-16 px-4 lg:px-28'>
       <Tabs defaultValue="threads" className="w-full flex flex-col gap-10">
         <TabsList className='h-fit px-2 flex flex-col sm:flex-row bg-zinc-800 py-2'>
-          <TabsTrigger value="threads" className='text-lg w-full'>Mes Threads</TabsTrigger>
-          <TabsTrigger value="data" className='text-lg w-full'>Infos</TabsTrigger>
+          <TabsTrigger value="threads" className='text-lg w-full font-semibold'>Mes Threads</TabsTrigger>
+          <TabsTrigger value="data" className='text-lg w-full font-semibold'>Infos</TabsTrigger>
         </TabsList>
         <TabsContent value="threads" className='flex flex-col gap-10'>
           <div className='flex items-center flex-col gap-16 md:px-8 md:flex-row md:justify-between w-full'>
@@ -36,8 +36,8 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
           </div>
           <Collection
             data={authorThreads?.data}
-            emptyTitle="Tu n'as pas encore crée de thread"
-            emptyStateSubtext="Va vite en créer"
+            emptyTitle="Aucun Thread"
+            emptyStateSubtext=""
             collectionType="All_Threads"
             delOrUpd={true}
             limit={6}

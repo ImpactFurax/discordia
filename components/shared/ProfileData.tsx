@@ -7,7 +7,7 @@ const ProfileData = async ({ userId }: { userId: string }) => {
   return (
     <div className='flex flex-col gap-10 items-center'>
       <h1 className='text-4xl font-bold text-center'>Infos</h1>
-      <div className='bg-zinc-800 rounded-lg p-2 w-full xl:w-[1000px]'>
+      <div className='bg-zinc-800 rounded-lg p-2 w-full xl:w-[1000px] text-white'>
         <div className='border-2 border-zinc-500 rounded-lg w-full p-4 flex flex-col md:flex-row gap-5'>
           <div className='flex flex-col items-center gap-2'>
             {userData?.userInfo.photo ? (

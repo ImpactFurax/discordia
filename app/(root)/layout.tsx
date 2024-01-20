@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className='flex flex-col min-h-srceen min-w-full bg-background max-h-screen'>
+    <div className='min-h-srceen'>
       <Topbar />
       <main className='flex flex-col-reverse sm:flex-row'>
         <Navbar />

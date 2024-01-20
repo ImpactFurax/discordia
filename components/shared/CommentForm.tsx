@@ -39,14 +39,14 @@ const CommentForm = ({ userId }: { userId: string }) => {
     <>
       {isSignedIn &&
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-full  lg:max-w-[800px]">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-full lg:max-w-[800px]">
             <FormField
               control={form.control}
               name="comment"
               render={({ field }) => (
                 <FormItem className="flex-center flex-col">
                   <FormControl>
-                    <Textarea placeholder="Ecrit un commentaire ... (max 500 caractères, espaces compris)" className="focus-visible:ring-0 bg-zinc-800 text-md min-h-[200px]" {...field} />
+                    <Textarea placeholder="Ecrit un commentaire ... (max 500 caractères, espaces compris)" className="focus-visible:ring-0 bg-zinc-800 text-white rounded-lg text-md min-h-[200px]" {...field} />
                   </FormControl>
                   <FormMessage className="text-red-500 text-sm" />
                 </FormItem>

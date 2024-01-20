@@ -12,9 +12,9 @@ const ThreadDetails = async ({ params: { id } }: SearchParamProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
   return (
-    <section className='flex-center flex-col py-12 px-3 gap-8'>
+    <section className='flex-center flex-col py-12 px-3 gap-8 '>
       <h1 className='text-center font-bold text-3xl sm:text-5xl'>{thread.title}</h1>
-      <div className=''>
+      <div>
         <Image src={thread.imageUrl} alt='ThreadImage' width={1000} height={1000} className='object-cover object-center rounded-xl' />
       </div>
       <h2 className='text-center font-bold text-3xl sm:text-5xl'>Histoire</h2>

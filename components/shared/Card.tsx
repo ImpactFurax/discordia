@@ -17,7 +17,7 @@ const Card = ({ thread, delOrUpd }: CardProps) => {
   const isThreadCreator = userId === thread.author._id.toString() && delOrUpd === true;
 
   return (
-    <div className='relative flex min-h-[330px] w-full md:w-[500px] overflow-hidden rounded-xl transition-all group'>
+    <div className='relative flex min-h-[330px] w-full md:w-[450px] overflow-hidden rounded-xl transition-all group'>
       <Link href={`/threads/${thread._id}`} className='absolute h-full w-full'>
         <Image src={thread.imageUrl} alt='ImageThread' fill className='object-cover group-hover:opacity-50 duration-500' />
         <div className='flex flex-col justify-between h-full p-4 absolute z-10 opacity-0 group-hover:opacity-100 transition-opacity w-full'>

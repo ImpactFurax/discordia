@@ -94,7 +94,7 @@ const ThreadForm = ({ userId, type, thread, threadId }: ThreadFormProps) => {
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-full gap-5">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-full gap-5 text-white">
         <FormField
           control={form.control}
           name="imageUrl"
