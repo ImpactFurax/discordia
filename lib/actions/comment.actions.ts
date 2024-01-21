@@ -33,12 +33,18 @@ export const getCommentsByThreadId = async (threadId: string) => {
   try {
     await connectToDatabase();
 
-    const comments = await populateComment(Comment.find({thread: threadId}));
-
-    if(!comments) {
+    const data = await populateComment(Comment.find({thread: threadId}));
+    
+    if(!data) {
       throw new Error("No comments found");
     }
-    return JSON.parse(JSON.stringify(comments))
+    const numberOfComments = await Comment.countDocuments({thread: threadId});
+
+    const dataComments = {
+      data,
+      nb: numberOfComments
+    }
+    return JSON.parse(JSON.stringify(dataComments))
   } catch (error) {
     console.log(error);
   }

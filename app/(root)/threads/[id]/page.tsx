@@ -27,7 +27,6 @@ const ThreadDetails = async ({ params: { id } }: SearchParamProps) => {
           <p>Créer le : <strong className='font-semibold'>{formatDateTime(thread.createdAt).dateTime}</strong></p>
           <p>Par : <strong className='font-semibold'>{thread.author.username.charAt(0).toUpperCase() + thread.author.username.slice(1)}</strong></p>
         </div>
-
         <LikedThread threadId={thread._id} userId={userId} />
       </div>
       <Comments threadId={thread._id} />
