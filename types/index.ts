@@ -72,3 +72,9 @@ export type CreateCommentParams = {
   comment: string
   path: string
 }
+
+export type likeParams = {
+  threadId: string
+  userId: string
+  isLiked?: boolean
+}

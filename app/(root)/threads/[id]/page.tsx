@@ -6,6 +6,7 @@ import { formatDateTime } from '@/lib/utils';
 import Comments from '@/components/shared/Comments';
 import CommentForm from '@/components/shared/CommentForm';
 import { auth } from '@clerk/nextjs';
+import LikedThread from '@/components/shared/LikedThread';
 
 const ThreadDetails = async ({ params: { id } }: SearchParamProps) => {
   const thread = await getThreadById(id);
@@ -21,9 +22,12 @@ const ThreadDetails = async ({ params: { id } }: SearchParamProps) => {
       <div className='flex w-full xl:w-[800px]'>
         <p className='text-lg whitespace-pre-wrap'>{thread.description}</p>
       </div>
-      <div className='text-left w-full text-lg sm:text-right xl:w-[1000px]'>
-        <p>Créer le : <strong className='font-semibold'>{formatDateTime(thread.createdAt).dateTime}</strong></p>
-        <p>Par : <strong className='font-semibold'>{thread.author.username.charAt(0).toUpperCase() + thread.author.username.slice(1)}</strong></p>
+      <div className='flex justify-between items-center gap-3 w-full text-lg xl:w-[1000px]'>
+        <div className='text-base sm:text-lg'>
+          <p>Créer le : <strong className='font-semibold'>{formatDateTime(thread.createdAt).dateTime}</strong></p>
+          <p>Par : <strong className='font-semibold'>{thread.author.username.charAt(0).toUpperCase() + thread.author.username.slice(1)}</strong></p>
+        </div>
+        <LikedThread threadId={thread._id} userId={userId} />
       </div>
       <Comments threadId={thread._id} />
       <CommentForm userId={userId} />
