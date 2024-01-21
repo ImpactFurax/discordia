@@ -7,6 +7,7 @@ import Comments from '@/components/shared/Comments';
 import CommentForm from '@/components/shared/CommentForm';
 import { auth } from '@clerk/nextjs';
 import LikedThread from '@/components/shared/LikedThread';
+import { numberOfLikeByThreadId } from '@/lib/actions/like.actions';
 
 const ThreadDetails = async ({ params: { id } }: SearchParamProps) => {
   const thread = await getThreadById(id);

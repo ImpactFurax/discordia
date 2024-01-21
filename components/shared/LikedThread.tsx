@@ -1,5 +1,5 @@
 'use client'
-import { alreadyLike, userLikeThread } from "@/lib/actions/like.actions";
+import { alreadyLike, numberOfLikeByThreadId, userLikeThread } from "@/lib/actions/like.actions";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
@@ -16,6 +16,7 @@ const LikedThread = ({ threadId, userId }: likedThreadProps) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [nbLikes, setNbLikes] = useState(0);
 
   useEffect(() => {
     const isAlreadyLike = async () => {
@@ -30,7 +31,12 @@ const LikedThread = ({ threadId, userId }: likedThreadProps) => {
         }
       }
     }
+    const likes = async () => {
+      const countLikes = await numberOfLikeByThreadId(threadId)
+      setNbLikes(countLikes);
+    }
     isAlreadyLike();
+    likes();
   }, [isSignedIn, threadId, userId])
 
   async function likedButton(isLiked: boolean) {
@@ -44,6 +50,9 @@ const LikedThread = ({ threadId, userId }: likedThreadProps) => {
       await userLikeThread({ threadId, userId, isLiked: !isLiked });
       setIsLiked(!isLiked);
 
+      const countLikes = await numberOfLikeByThreadId(threadId);
+      setNbLikes(countLikes);
+
       setTimeout(() => {
         setIsButtonDisabled(false);
       }, 1000);
@@ -52,8 +61,8 @@ const LikedThread = ({ threadId, userId }: likedThreadProps) => {
     }
   }
   return (
-    <>
-      <p></p>
+    <div className="flex items-center gap-2">
+      <p className="font-bold">{nbLikes}</p>
       <Button className={`bg-zinc-800 h-fit w-fit p-1 rounded-md cursor-pointer hover:bg-zinc-700 ${isButtonDisabled ? 'opacity-50 pointer-events-none' : ''}`} onClick={() => likedButton(isLiked)}>
         {isLiked ? (
           <Image src="/assets/icons/like-yes.png" alt="like-yes" width={30} height={30} onClick={() => setIsLiked(false)} />
@@ -64,7 +73,7 @@ const LikedThread = ({ threadId, userId }: likedThreadProps) => {
       {!isSignedIn && (
         <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
       )}
-    </>
+    </div>
   )
 }
 

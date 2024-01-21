@@ -1,12 +1,12 @@
 'use server'
 
-import { likeParams } from "@/types"
+import { LikeParams } from "@/types"
 import { connectToDatabase } from "../database";
 import User from "../database/models/user.model";
 import Thread from "../database/models/thread.model";
 import Like from "../database/models/like.model";
 
-export const userLikeThread = async ({ threadId, userId, isLiked }: likeParams) => {
+export const userLikeThread = async ({ threadId, userId, isLiked }: LikeParams) => {
   try {
     await connectToDatabase();
 
@@ -39,7 +39,7 @@ export const userLikeThread = async ({ threadId, userId, isLiked }: likeParams) 
   }
 }
 
-export const alreadyLike = async ({ threadId, userId }: likeParams) => {
+export const alreadyLike = async ({ threadId, userId }: LikeParams) => {
   try {
     await connectToDatabase();
 
@@ -58,6 +58,25 @@ export const alreadyLike = async ({ threadId, userId }: likeParams) => {
     const existingLike = await Like.findOne({ thread: threadId, author: userId });
 
     return JSON.parse(JSON.stringify(existingLike));
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to perform like action");
+  }
+}
+
+export const numberOfLikeByThreadId = async (threadId: string) => {
+  try {
+    await connectToDatabase();
+
+    const thread = await Thread.findById(threadId);
+
+    if (!thread) {
+      throw new Error("Thread not found");
+    }
+
+    const nbLikes = await Like.countDocuments({thread: threadId});
+
+    return JSON.parse(JSON.stringify(nbLikes));
   } catch (error) {
     console.error(error);
     throw new Error("Failed to perform like action");
