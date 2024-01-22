@@ -9,11 +9,11 @@ const Comments = async ({ threadId }: { threadId: string }) => {
   return (
     <>
       {threadComments.data.length > 0 ? (
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-5 w-full xl:w-[1000px]'>
           <h2 className='text-2xl font-bold'>{threadComments.nb} commentaires</h2>
           <ul className='w-full flex flex-col items-center gap-8'>
             {threadComments.data.map((threadComment: any) => (
-              <li key={threadComment._id} className='bg-zinc-800 text-white rounded-lg p-4 flex flex-col gap-3 w-full xl:w-[1000px]'>
+              <li key={threadComment._id} className='bg-zinc-800 text-white rounded-lg p-4 flex flex-col gap-3 w-full'>
                 <div className='flex items-center gap-4'>
                   <Image src={threadComment.author.photo} alt='photo' width={40} height={40} className='rounded-full' />
                   <h4 className='font-semibold text-lg'>{threadComment.author.username.charAt(0).toUpperCase() + threadComment.author.username.slice(1)}</h4>
