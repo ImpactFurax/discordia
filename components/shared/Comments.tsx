@@ -21,7 +21,7 @@ const Comments = async ({ threadId }: { threadId: string }) => {
                 <Separator className='bg-gray-500 opacity-50' />
                 <p>{threadComment.comment}</p>
                 <Separator className='bg-gray-500 opacity-50' />
-                <p className='lg:text-right'>Le {formatDateTime(threadComment.createdAt).dateTime}</p>
+                <p className='text-right'>Le {formatDateTime(threadComment.createdAt).dateTime}</p>
               </li>
             ))}
           </ul>

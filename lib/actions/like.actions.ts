@@ -6,6 +6,8 @@ import User from "../database/models/user.model";
 import Thread from "../database/models/thread.model";
 import Like from "../database/models/like.model";
 
+// thread
+
 export const userLikeThread = async ({ threadId, userId, isLiked }: LikeParams) => {
   try {
     await connectToDatabase();
@@ -82,3 +84,5 @@ export const numberOfLikeByThreadId = async (threadId: string) => {
     throw new Error("Failed to perform like action");
   }
 }
+
+// comment

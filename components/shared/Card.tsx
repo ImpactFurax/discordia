@@ -25,7 +25,7 @@ const Card = async ({ thread, delOrUpd }: CardProps) => {
         <div className='flex flex-col justify-between h-full p-4 absolute z-10 opacity-0 group-hover:opacity-100 transition-opacity w-full'>
           <h2 className='text-2xl sm:text-4xl font-bold pr-8'>{thread.title}</h2>
           <p className='text-sm sm:text-base md:text-lg'>{thread.summary}</p>
-          <div className='flex items-center justify-between gap-2'>
+          <div className='flex items-center justify-between gap-2 bg-zinc-800/80 py-1 px-3 rounded-full'>
             <p className='text-lg'>
               De :{' '}
               <strong className='font-semibold'>
@@ -37,10 +37,10 @@ const Card = async ({ thread, delOrUpd }: CardProps) => {
               {countLikes > 0 ? (
                 <Image src="/assets/icons/like-yes.png" alt='like' width={20} height={20} />
               ) : (
-                <Image src="/assets/icons/like-none.png" alt='like' width={20} height={20} />
+                <Image src="/assets/icons/like-white.png" alt='like' width={20} height={20} />
               )}
             </div>
-            <Image src="/assets/icons/view.svg" alt='voir' width={40} height={40} />
+            <Image src="/assets/icons/view.svg" alt='voir' width={30} height={30} />
           </div>
         </div>
       </Link>

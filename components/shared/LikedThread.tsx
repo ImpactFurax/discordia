@@ -9,14 +9,16 @@ import Popup from "./Popup";
 type likedThreadProps = {
   threadId: string;
   userId: string;
+  threadAuthor: string
 }
 
-const LikedThread = ({ threadId, userId }: likedThreadProps) => {
+const LikedThread = ({ threadId, userId, threadAuthor }: likedThreadProps) => {
   const { isSignedIn } = useSession();
   const [isLiked, setIsLiked] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [nbLikes, setNbLikes] = useState(0);
+  const notForUser = userId === threadAuthor;
 
   useEffect(() => {
     const isAlreadyLike = async () => {
@@ -55,25 +57,29 @@ const LikedThread = ({ threadId, userId }: likedThreadProps) => {
 
       setTimeout(() => {
         setIsButtonDisabled(false);
-      }, 1000);
+      }, 500);
     } catch (error) {
       console.error(error);
     }
   }
   return (
-    <div className="flex items-center gap-2">
-      <p className="font-bold">{nbLikes}</p>
-      <Button className={`bg-zinc-800 h-fit w-fit p-1 rounded-md cursor-pointer hover:bg-zinc-700 ${isButtonDisabled ? 'opacity-50 pointer-events-none' : ''}`} onClick={() => likedButton(isLiked)}>
-        {isLiked ? (
-          <Image src="/assets/icons/like-yes.png" alt="like-yes" width={30} height={30} onClick={() => setIsLiked(false)} />
-        ) : (
-          <Image src="/assets/icons/like-none.png" alt="like-none" width={30} height={30} onClick={() => setIsLiked(true)} />
-        )}
-      </Button>
-      {!isSignedIn && (
-        <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
-      )}
-    </div>
+    <>
+      {!notForUser &&
+        <div className="flex items-center gap-2">
+          <p className="font-bold">{nbLikes}</p>
+          <Button className={`bg-zinc-800 h-fit w-fit p-1 rounded-md cursor-pointer hover:bg-zinc-700 transition-all ${isButtonDisabled ? 'opacity-50 pointer-events-none' : ''}`} onClick={() => likedButton(isLiked)}>
+            {isLiked ? (
+              <Image src="/assets/icons/like-yes.png" alt="like-yes" width={30} height={30} onClick={() => setIsLiked(false)} />
+            ) : (
+              <Image src="/assets/icons/like-none.png" alt="like-none" width={30} height={30} onClick={() => setIsLiked(true)} />
+            )}
+          </Button>
+          {!isSignedIn && (
+            <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+          )}
+        </div>
+      }
+    </>
   )
 }
 
