@@ -1,5 +1,5 @@
 import { authMiddleware } from "@clerk/nextjs";
- 
+
 export default authMiddleware({
   publicRoutes: [
     '/',
@@ -13,7 +13,7 @@ export default authMiddleware({
     '/api',
     '/api/webhook/clerk',
     '/api/uploadthing',
-  ]
+  ],
 });
  
 export const config = {

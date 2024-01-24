@@ -6,6 +6,12 @@ export const NavLinks = [
   { url: '/settings', image: '/assets/icons/settings.svg', label: 'Options' },
 ]
 
+export const AdminNavLinks = [
+  { url: '/admin/dashboard', image: '/assets/icons/dashboard.svg', label: 'Dashboard' },
+  { url: '/admin/users', image: '/assets/icons/users.svg', label: 'Users' },
+  { url: '/admin/threads', image: '/assets/icons/threads.svg', label: 'Threads' }
+]
+
 export const threadDefaultValues = {
   title: '',
   description: '',
