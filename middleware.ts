@@ -9,6 +9,8 @@ export default authMiddleware({
     '/api/webhook/clerk',
     '/api/uploadthing',
     '/admin/dashboard',
+    '/admin/users',
+    '/admin/threads',
   ],
   ignoredRoutes: [
     '/api',

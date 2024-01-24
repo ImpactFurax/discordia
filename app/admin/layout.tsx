@@ -2,6 +2,7 @@ import AdminNavbar from '@/components/shared/admin/AdminNavbar'
 import AdminTopbar from '@/components/shared/admin/AdminTopbar'
 import { userRole } from '@/lib/actions/user.actions'
 import { auth } from '@clerk/nextjs'
+import { redirect } from 'next/navigation'
 import React, { ReactNode } from 'react'
 
 const Layout = async ({ children }: { children: ReactNode }) => {
@@ -11,6 +12,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
   if (userId) {
     user = await userRole(userId);
   }
+  if (user?.role !== 'admin') redirect('/');
 
   return (
     <>

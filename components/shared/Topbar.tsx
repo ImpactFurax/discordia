@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import ThemeAction from './ThemeAction'
+import AdminLink from './AdminLink'
 
 const Topbar = () => {
   return (
@@ -11,6 +12,7 @@ const Topbar = () => {
         <Image src="/assets/images/hand-logo.png" alt='hand-logo' width={55} height={60} />
         <Image src="/assets/images/logo.png" alt='logo' width={165} height={65} className='hidden sm:flex' />
       </Link>
+      <AdminLink />
       <div className='flex items-center gap-2'>
         <ThemeAction />
         <div>
