@@ -58,7 +58,7 @@ export async function getUserDataById(clerkId: string) {
   try {
     await connectToDatabase();
 
-    const user = await User.findById(clerkId, 'photo username email');
+    const user = await User.findById(clerkId, 'photo username email role');
     const nbThreadUser = await Thread.countDocuments({ author: clerkId });
    
 
@@ -72,6 +72,22 @@ export async function getUserDataById(clerkId: string) {
     }
    
     return JSON.parse(JSON.stringify(userData))
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const userRole = async (userId: string) => {
+  try {
+    await connectToDatabase();
+
+    const user = await User.findById(userId, 'role');
+  
+    if(!user) {
+      throw new Error('User not found');
+    }
+   
+    return JSON.parse(JSON.stringify(user))
   } catch (error) {
     console.log(error);
   }

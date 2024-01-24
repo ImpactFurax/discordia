@@ -14,7 +14,7 @@ type CardProps = {
 const Card = async ({ thread, delOrUpd }: CardProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
-  const isThreadCreator = userId === thread.author._id.toString() && delOrUpd === true;
+  const isThreadCreator = userId === thread.author?._id.toString() && delOrUpd === true;
   const countLikes = await numberOfLikeByThreadId(thread._id);
 
 
@@ -29,7 +29,7 @@ const Card = async ({ thread, delOrUpd }: CardProps) => {
             <p className='text-lg'>
               De :{' '}
               <strong className='font-semibold'>
-                {thread.author.username.charAt(0).toUpperCase() + thread.author.username.slice(1)}
+                {thread.author?.username.charAt(0).toUpperCase() + thread.author?.username.slice(1)}
               </strong>
             </p>
             <div className='flex items-center gap-1'>
