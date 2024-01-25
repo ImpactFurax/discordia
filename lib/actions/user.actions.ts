@@ -92,3 +92,19 @@ export const userRole = async (userId: string) => {
     console.log(error);
   }
 }
+
+export const getAllUsers = async () => {
+  try {
+    await connectToDatabase();
+
+    const users = await User.find();
+   
+    if(!users) {
+      throw new Error('Users not found');
+    }
+
+    return JSON.parse(JSON.stringify(users))
+  } catch (error) {
+    console.log(error);
+  }
+} 

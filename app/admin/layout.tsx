@@ -17,7 +17,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
   return (
     <>
       {user?.role === 'admin' ? (
-        <main className='min-h-screen py-20 sm:py-2 sm:pl-20 lg:pl-52'>
+        <main className='min-h-screen py-20 sm:py-2 sm:pl-[70px] lg:pl-[185px]'>
           <AdminTopbar />
           <div>
             {children}
