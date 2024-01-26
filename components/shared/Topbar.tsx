@@ -2,7 +2,6 @@ import { SignedOut, UserButton } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import ThemeAction from './ThemeAction'
 import AdminLink from './AdminLink'
 
 const Topbar = () => {
@@ -14,7 +13,6 @@ const Topbar = () => {
       </Link>
       <AdminLink />
       <div className='flex items-center gap-2'>
-        <ThemeAction />
         <div>
           <UserButton afterSignOutUrl='/' />
         </div>

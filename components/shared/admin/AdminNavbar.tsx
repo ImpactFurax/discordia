@@ -15,7 +15,7 @@ const AdminNavbar = () => {
     <nav className='fixed bottom-0 w-full sm:left-0 sm:w-fit sm:h-screen p-2 sm:py-4 bg-zinc-800 flex flex-col justify-between sm:items-center'>
       <ul className='flex justify-around sm:flex-col gap-5'>
         {AdminNavLinks.map((link) => {
-          const isActive = pathname === link.url;
+          const isActive = pathname === link.url || pathname.startsWith(link.url) && link.url !== '/';
           return (
             <Link href={link.url} key={link.label} className={`flex gap-4 rounded-md p-3 lg:py-6 md:w-full ${isActive && 'bg-blue-700'}`}>
               <Image src={link.image} alt={link.label} width={30} height={30} />
@@ -25,7 +25,7 @@ const AdminNavbar = () => {
         })}
       </ul>
       <div className='hidden sm:flex flex-col items-center gap-5'>
-        <Button variant="destructive" className='font-bold text-lg'>
+        <Button className='font-bold text-lg text-white bg-red-700 hover:bg-red-800'>
           <Link href="/" className='flex items-center gap-3'>
             <Image src="/assets/icons/home.svg" alt='Home' width={25} height={25} />
             <p className='hidden lg:flex'>WebSite</p>

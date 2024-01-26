@@ -11,7 +11,7 @@ const AdminTopbar = () => {
   return (
     <div className='fixed top-0 w-full bg-zinc-800 p-4 flex items-center justify-end sm:hidden'>
       <div className='flex sm:hidden justify-between w-full'>
-        <Button variant="destructive" className='font-bold text-lg'>
+        <Button className='font-bold text-lg text-white bg-red-700 hover:bg-red-800'>
           <Link href="/" className='flex items-center gap-3'>
             <Image src="/assets/icons/home.svg" alt='Home' width={25} height={25} />
             <p>WebSite</p>

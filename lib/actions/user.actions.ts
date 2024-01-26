@@ -6,6 +6,8 @@ import User from "../database/models/user.model";
 import { revalidatePath } from "next/cache";
 import Thread from "../database/models/thread.model";
 
+// USER
+
 export const createUser = async (user: CreateUserParams) => {
   try {
     await connectToDatabase();
@@ -93,6 +95,8 @@ export const userRole = async (userId: string) => {
   }
 }
 
+// ADMIN
+
 export const getAllUsers = async () => {
   try {
     await connectToDatabase();
@@ -108,3 +112,4 @@ export const getAllUsers = async () => {
     console.log(error);
   }
 } 
+
