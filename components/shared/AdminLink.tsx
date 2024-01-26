@@ -14,7 +14,7 @@ const AdminLink = async () => {
   }
   return (
     <>
-      {user?.role === 'admin' && (
+      {user?.role === 'Admin' && (
         <Button className='bg-blue-700 font-bold text-white hover:bg-blue-800'>
           <Link href="/admin/dashboard" className='font-bold text-xl flex items-center gap-2' >
             <Image src="/assets/icons/admin.png" alt='admin' width={25} height={25} />

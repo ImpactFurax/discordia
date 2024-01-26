@@ -44,7 +44,7 @@ const UsersCollection = () => {
             <td className='py-4 px-4 hidden sm:flex h-[72px] items-center'>{user._id}</td>
             <td className='py-4 px-4'>{user.username.charAt(0).toUpperCase() + user.username.slice(1)}</td>
             <td className='py-4 px-4 hidden lg:flex h-[72px] items-center'>{user.email}</td>
-            <td className='py-4 px-4'>{user.role}</td>
+            <td className={`py-4 px-4 ${user.role === 'Admin' ? 'text-red-500' : 'text-blue-500'}`}>{user.role}</td>
           </tr>
         ))}
       </tbody>

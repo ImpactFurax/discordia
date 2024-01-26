@@ -5,7 +5,7 @@ const UserSchema = new Schema({
   email: {type: String, required: true, unique: true },
   username: {type: String, required: true, unique: true },
   photo: { type: String, required: true },
-  role: { type: String, default: 'user' },
+  role: { type: String, default: 'User' },
 })
 
 const User = models.User || model('User', UserSchema);

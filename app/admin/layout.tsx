@@ -12,11 +12,11 @@ const Layout = async ({ children }: { children: ReactNode }) => {
   if (userId) {
     user = await userRole(userId);
   }
-  if (user?.role !== 'admin') redirect('/');
+  if (user?.role !== 'Admin') redirect('/');
 
   return (
     <>
-      {user?.role === 'admin' ? (
+      {user?.role === 'Admin' ? (
         <main className='min-h-screen py-20 sm:py-2 sm:pl-[70px] lg:pl-[185px]'>
           <AdminTopbar />
           <div>
